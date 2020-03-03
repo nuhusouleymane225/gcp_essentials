@@ -4,14 +4,13 @@ ma première initiation au cloud computing
 
 
 ### répertorier les noms des comptes actifs
-'''
+
 gcloud auth list
-'''
 
 ### répertorier les ID de projet
-'''
+
 gcloud config list project
-'''
+
 ### Installez NGINX
 apt-get install nginx -y
 
@@ -31,10 +30,10 @@ gcloud compute ssh gcelab2 --zone [YOUR_ZONE]
 
 ## Créer une instance Windows Server dans Google Compute Engine, puis y accéder via le protocole RDP.
 
-1.Dans la console GCP, accédez à Compute Engine > VM instances (Instances de VM), puis cliquez sur Create (Créer).
-2.Dans la section Boot disk (Disque de démarrage), cliquez sur Change (Modifier) pour commencer à configurer le disque de démarrage.
+1. Dans la console GCP, accédez à Compute Engine > VM instances (Instances de VM), puis cliquez sur Create (Créer).
+2. Dans la section Boot disk (Disque de démarrage), cliquez sur Change (Modifier) pour commencer à configurer le disque de démarrage.
 Cliquez sur Windows Server 2012 R2 Datacenter, puis sur Select (Sélectionner). Conservez les valeurs par défaut de tous les autres paramètres.
-3.Cliquez sur le bouton Create (Créer) pour créer l'instance.
+3. Cliquez sur le bouton Create (Créer) pour créer l'instance.
 
 Pour vérifier si le serveur peut accepter une connexion RDP, exécutez la commande suivante dans cloud shell
 
@@ -45,10 +44,10 @@ Finished running startup scripts.
 
 
 ### Se connecter à votre instance
-1.Cliquez sur le nom de votre machine virtuelle.
-2.Dans la section Remote Access (Accès à distance), cliquez sur le bouton Set Windows Password (Définir un mot de passe Windows)
-3.Un nom d'utilisateur est généré.
+1. Cliquez sur le nom de votre machine virtuelle.
+2. Dans la section Remote Access (Accès à distance), cliquez sur le bouton Set Windows Password (Définir un mot de passe Windows)
+3. Un nom d'utilisateur est généré.
 Cliquez sur Set (Définir) afin de générer un mot de passe pour cette instance Windows. Cette opération peut prendre plusieurs minutes.
 Copiez le mot de passe, puis enregistrez-le pour pouvoir vous connecter à l'instance.
-4.Vous pouvez vous connecter via le protocole RDP directement depuis le navigateur à l'aide de l'extension Chrome RDP for Google Cloud Platform.
-5.Cliquez sur RDP pour vous connecter.Vous êtes invité à installer l'extension RDP. Une fois celle-ci installée, GCP ouvre une page de connexion où vous pouvez saisir votre nom d'utilisateur et votre mot de passe Windows pour vous connecter. Collez le mot de passe que vous avez enregistré précédemment.
+4. Vous pouvez vous connecter via le protocole RDP directement depuis le navigateur à l'aide de l'extension Chrome RDP for Google Cloud Platform.
+5. Cliquez sur RDP pour vous connecter.Vous êtes invité à installer l'extension RDP. Une fois celle-ci installée, GCP ouvre une page de connexion où vous pouvez saisir votre nom d'utilisateur et votre mot de passe Windows pour vous connecter. Collez le mot de passe que vous avez enregistré précédemment.
