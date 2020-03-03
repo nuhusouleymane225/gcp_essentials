@@ -21,9 +21,10 @@ ps auwx | grep nginx
 ### Dans Cloud Shell, créer une instance de machine virtuelle à partir gcloud 
 gcloud compute instances create gcelab2 --machine-type n1-standard-2 --zone [your_zone]
 ###  définir la région et les zones par défaut utilisées par gcloud si vous travaillez toujours dans une même région/zone
-
+```gcloud
 gcloud config set compute/zone [your_zone]
 gcloud config set compute/region [your_zone]
+```
 ### Pour se connecter en SSH à votre instance 
 
 gcloud compute ssh gcelab2 --zone [YOUR_ZONE]
