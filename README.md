@@ -57,10 +57,10 @@ Copiez le mot de passe, puis enregistrez-le pour pouvoir vous connecter à l'ins
 1. Définir la zone et la région par défaut de toutes les ressources
 2. Créer plusieurs instances de serveur Web
 ...Pour créer les clusters de serveurs Web Nginx, créez les éléments suivants :
-..* Un script de démarrage, qui permettra à chaque instance de machine virtuelle de configurer le serveur Nginx au démarrage
-..* Un modèle d'instance, qui va utiliser le script de démarrage
-..* Un pool cible
-..* Un groupe d'instances géré, défini à partir du modèle d'instance
+* Un script de démarrage, qui permettra à chaque instance de machine virtuelle de configurer le serveur Nginx au démarrage
+* Un modèle d'instance, qui va utiliser le script de démarrage
+* Un pool cible
+* Un groupe d'instances géré, défini à partir du modèle d'instance
 
 ### le script de demarage et de configuration des serveurs nginx
 ```bash
