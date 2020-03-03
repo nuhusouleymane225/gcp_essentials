@@ -1,4 +1,4 @@
-# gcp_essentials
+# gcp_essentials :fa-hand-paper-o a-shake:
 ma première initiation au cloud computing 
 
 
