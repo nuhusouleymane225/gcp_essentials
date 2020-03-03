@@ -1,4 +1,4 @@
-# gcp_essentials ![alt text](https:https://cdn.qwiklabs.com/ykt8NTzPWC6%2BW8mAljshFqjsAPrZ8bElG7SLw4kSrtU%3D "google cloud")
+# gcp_essentials ![alt text](https://cdn.qwiklabs.com/ykt8NTzPWC6%2BW8mAljshFqjsAPrZ8bElG7SLw4kSrtU%3D "google cloud")
 
 ma première initiation au cloud computing 
 
