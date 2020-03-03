@@ -72,3 +72,27 @@ service nginx start
 sed -i -- 's/nginx/Google Cloud Platform - '"\$HOSTNAME"'/' /var/www/html/index.nginx-debian.html
 EOF
 ```
+Créez un modèle d'instance, qui utilise le script de démarrage :
+gcloud compute instance-templates create nginx-template \
+         --metadata-from-file startup-script=startup.sh
+         
+Celui-ci permet de disposer d'un point d'accès unique pour l'ensemble des instances d'un groupe
+procéder ensuite à l'équilibrage de charge.
+gcloud compute target-pools create nginx-pool
+
+Créez un groupe d'instances géré, défini à partir du modèle d'instance :
+
+gcloud compute instance-groups managed create nginx-group \
+         --base-instance-name nginx \
+         --size 2 \
+         --template nginx-template \
+         --target-pool nginx-pool
+Listez les instances Compute Engine:
+gcloud compute instances list
+
+Configurons à présent le pare-feu, de sorte que vous puissiez vous connecter aux machines sur le port 80, via les adresses EXTERNAL_IP :
+gcloud compute firewall-rules create www-firewall --allow tcp:80
+
+
+
+Vous devriez pouvoir vous connecter à chacune des instances via son adresse IP externe, en saisissant le résultat de la commande précédente, soit http://EXTERNAL_IP/.
