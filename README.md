@@ -52,3 +52,23 @@ Cliquez sur Set (Définir) afin de générer un mot de passe pour cette instance
 Copiez le mot de passe, puis enregistrez-le pour pouvoir vous connecter à l'instance.
 4. Vous pouvez vous connecter via le protocole RDP directement depuis le navigateur à l'aide de l'extension Chrome RDP for Google Cloud Platform.
 5. Cliquez sur RDP pour vous connecter.Vous êtes invité à installer l'extension RDP. Une fois celle-ci installée, GCP ouvre une page de connexion où vous pouvez saisir votre nom d'utilisateur et votre mot de passe Windows pour vous connecter. Collez le mot de passe que vous avez enregistré précédemment.
+
+# Configurer des équilibreurs de charge réseau et HTTP
+1. Définir la zone et la région par défaut de toutes les ressources
+2. Créer plusieurs instances de serveur Web
+...Pour créer les clusters de serveurs Web Nginx, créez les éléments suivants :
+..* Un script de démarrage, qui permettra à chaque instance de machine virtuelle de configurer le serveur Nginx au démarrage
+..* Un modèle d'instance, qui va utiliser le script de démarrage
+..* Un pool cible
+..* Un groupe d'instances géré, défini à partir du modèle d'instance
+
+### le script de demarage et de configuration des serveurs nginx
+```bash
+cat << EOF > startup.sh
+#! /bin/bash
+apt-get update
+apt-get install -y nginx
+service nginx start
+sed -i -- 's/nginx/Google Cloud Platform - '"\$HOSTNAME"'/' /var/www/html/index.nginx-debian.html
+EOF
+```
