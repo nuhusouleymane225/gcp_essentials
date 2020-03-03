@@ -5,13 +5,13 @@ ma première initiation au cloud computing
 
 
 ### répertorier les noms des comptes actifs
-
+```gcloud
 gcloud auth list
-
+```
 ### répertorier les ID de projet
-
+```gcloud
 gcloud config list project
-
+```
 ### Installez NGINX
 apt-get install nginx -y
 
@@ -26,9 +26,9 @@ gcloud config set compute/zone [your_zone]
 gcloud config set compute/region [your_zone]
 ```
 ### Pour se connecter en SSH à votre instance 
-
+```gcloud
 gcloud compute ssh gcelab2 --zone [YOUR_ZONE]
-
+```
 
 ## Créer une instance Windows Server dans Google Compute Engine, puis y accéder via le protocole RDP.
 
@@ -38,9 +38,9 @@ Cliquez sur Windows Server 2012 R2 Datacenter, puis sur Select (Sélectionner). 
 3. Cliquez sur le bouton Create (Créer) pour créer l'instance.
 
 Pour vérifier si le serveur peut accepter une connexion RDP, exécutez la commande suivante dans cloud shell
-
+```gcloud
 gcloud compute instances get-serial-port-output instance-1 --zone us-central1-a
-
+```
 NB: Répétez la commande jusqu'à ce que le résultat ci-dessous s'affiche
 Finished running startup scripts.
 
@@ -74,26 +74,30 @@ sed -i -- 's/nginx/Google Cloud Platform - '"\$HOSTNAME"'/' /var/www/html/index.
 EOF
 ```
 Créez un modèle d'instance, qui utilise le script de démarrage :
+```gcloud
 gcloud compute instance-templates create nginx-template \
          --metadata-from-file startup-script=startup.sh
-         
+ ```        
 Celui-ci permet de disposer d'un point d'accès unique pour l'ensemble des instances d'un groupe
 procéder ensuite à l'équilibrage de charge.
 gcloud compute target-pools create nginx-pool
 
 Créez un groupe d'instances géré, défini à partir du modèle d'instance :
-
+```gcloud
 gcloud compute instance-groups managed create nginx-group \
          --base-instance-name nginx \
          --size 2 \
          --template nginx-template \
          --target-pool nginx-pool
+```
 Listez les instances Compute Engine:
+```gcloud
 gcloud compute instances list
-
+```
 Configurons à présent le pare-feu, de sorte que vous puissiez vous connecter aux machines sur le port 80, via les adresses EXTERNAL_IP :
+```gcloud
 gcloud compute firewall-rules create www-firewall --allow tcp:80
-
+```
 
 
 Vous devriez pouvoir vous connecter à chacune des instances via son adresse IP externe, en saisissant le résultat de la commande précédente, soit http://EXTERNAL_IP/.
